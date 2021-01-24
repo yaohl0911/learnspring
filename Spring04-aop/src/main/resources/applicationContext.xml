@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="userServiceImpl" class="com.yaohl0911.service.UserServiceImpl"></bean>
+    <bean id="beforeLog" class="com.yaohl0911.log.BeforeLog"></bean>
+    <bean id="afterLog" class="com.yaohl0911.log.AfterLog"></bean>
+
+    <aop:config>
+        <aop:pointcut id="pointcut" expression="execution(* com.yaohl0911.service.UserServiceImpl.*(..))"/>
+        <aop:advisor advice-ref="beforeLog" pointcut-ref="pointcut"></aop:advisor>
+        <aop:advisor advice-ref="afterLog" pointcut-ref="pointcut"></aop:advisor>
+    </aop:config>
+
+    <bean id="diyPointCut" class="com.yaohl0911.diy.DiyPointCut"></bean>
+    <aop:config>
+        <aop:aspect ref="diyPointCut">
+            <aop:pointcut id="pointcut1" expression="execution(* com.yaohl0911.service.UserServiceImpl.*(..))"/>
+            <aop:before method="diyBefore" pointcut-ref="pointcut1"></aop:before>
+            <aop:after method="diyAfter" pointcut-ref="pointcut1"></aop:after>
+        </aop:aspect>
+    </aop:config>
+</beans>
