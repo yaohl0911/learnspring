@@ -379,9 +379,9 @@ public class DiyPointCut {
 
 `@Aspec`   标注为切面
 
-`@Before(ececution(* com.yaohl0911.service.UserServiceImpl.*(..)))  execution`指定了切入的位置，即指定了切入点，第一个星号代表返回值，第二个星号代表该类的任意方法，“..”代表任意参数
+`@Before(ececution(* com.yaohl0911.service.UserServiceImpl.*(..)))`  execution指定了切入的位置，即指定了切入点，第一个星号代表返回值，第二个星号代表该类的任意方法，“..”代表任意参数
 
-`@After(ececution(* com.yaohl0911.service.UserServiceImpl.*(..)))`
+`@After(ececution(* com.yaohl0911.service.UserServiceImpl.*(..)))`   参数含义同上
 
 ```java
 @Component  // 这里注意，即使用@Aspect标注为切面了，还是需要注册为bean的
