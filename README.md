@@ -71,10 +71,10 @@
 
 ```xml
 <bean id="userServiceImpl" class="com.yaohl0911.service.UserServiceImpl">
-        <!-- 注意对象用ref，值用value-->
-        <constructor-arg index="0" ref="userDaoMysqlImpl"></constructor-arg>
-        <constructor-arg index="1" value="Spring"></constructor-arg>
-    </bean>
+    <!-- 注意对象用ref，值用value-->
+    <constructor-arg index="0" ref="userDaoMysqlImpl"></constructor-arg>
+    <constructor-arg index="1" value="Spring"></constructor-arg>
+</bean>
 ```
 
 ##### 通过参数的类型
